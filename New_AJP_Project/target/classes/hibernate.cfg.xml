@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+
+	<!-- JDBC Database connection settings -->
+	<session-factory>
+
+		<!-- JDBC Driver -->
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property> <!-- for Oracle 12c -->
+
+		<!-- JDBC connection URL -->
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@your_oracle_host:1521:xe</property>
+
+		<!-- JDBC connection username -->
+		<property name="hibernate.connection.username">System</property>
+
+		<!-- JDBC connection password -->
+		<property name="hibernate.connection.password">12345</property>
+
+		<!-- JDBC Driver class -->
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+
+		<!-- Connection pool settings -->
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+
+		<!-- Specify the JDBC connection pool (c3p0 or others) -->
+		<property name="hibernate.c3p0.acquire_increment">5</property>
+
+		<!-- JDBC connection pool validation settings -->
+		<property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
+		<property name="hibernate.c3p0.idleConnectionTestPeriod">3000</property>
+
+		<!-- Echo all executed queries to stdout -->
+		<property name="hibernate.show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hibernate.hbm2ddl.auto">update</property> <!-- change to "validate" or "none" in production -->
+
+		<!-- Disable the second-level cache -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- Disable the use of the query cache -->
+		<property name="hibernate.cache.use_query_cache">false</property>
+
+		<!-- Echo all executed queries -->
+		<property name="hibernate.format_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hibernate.hbm2ddl.auto">update</property> <!-- use 'none' in production -->
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- Enable the Hibernate Query Language (HQL) logging -->
+		<property name="hibernate.generate_statistics">true</property>
+
+		<!-- Enable query caching -->
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+	</session-factory>
+	<!-- Mention annotated classes here -->
+	<mapping class="com.MedicalStore.entities.Product" />
+	<mapping class="com.MedicalStore.entities.Sales" />
+	<mapping class="com.MedicalStore.entities.SalesItem" />
+	<mapping class="com.MedicalStore.entities.Bill" />
+	<mapping class="com.MedicalStore.entities.Customer" />
+	<mapping class="com.MedicalStore.entities.Staff" />
+	<mapping class="com.MedicalStore.entities.Admin" />
+
+</hibernate-configuration>
